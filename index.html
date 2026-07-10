@@ -4,31 +4,370 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Océane & Lucas | Tout a commencé par un "Enchanté"</title>
-
-<link rel="stylesheet" href="css/style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Pinyon+Script&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#f7f3ec;
+font-family:'Nunito',sans-serif;
+color:#51453a;
+overflow-x:hidden;
+
+}
+
+img{
+
+width:100%;
+display:block;
+
+}
+
+section{
+
+padding:90px 10%;
+position:relative;
+
+}
+
+h1,h2{
+
+font-family:"Cormorant Garamond",serif;
+
+}
+
+.cover{
+
+height:100vh;
+background:
+linear-gradient(rgba(255,255,255,.35),rgba(255,255,255,.35)),
+url(images/couverture.jpg);
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+position:relative;
+
+}
+
+.cover::before{
+
+content:"";
+
+position:absolute;
+
+inset:0;
+
+background:url("images/fleurs.png");
+
+background-size:350px;
+
+opacity:.12;
+
+pointer-events:none;
+
+}
+
+.book{
+
+background:white;
+
+padding:70px;
+
+border-radius:10px;
+
+max-width:700px;
+
+text-align:center;
+
+box-shadow:0 25px 60px rgba(0,0,0,.18);
+
+animation:apparition 1.2s;
+
+}
+
+@keyframes apparition{
+
+from{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.book h1{
+
+font-size:70px;
+
+font-weight:600;
+
+margin-bottom:15px;
+
+}
+
+.book h2{
+
+font-size:38px;
+
+font-weight:400;
+
+margin-bottom:25px;
+
+}
+
+.date{
+
+font-size:22px;
+
+letter-spacing:3px;
+
+margin-bottom:40px;
+
+}
+
+.open{
+
+background:#98a486;
+
+color:white;
+
+padding:18px 42px;
+
+border:none;
+
+border-radius:40px;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.4s;
+
+}
+
+.open:hover{
+
+transform:translateY(-3px);
+
+background:#7c8d6c;
+
+}
+
+.intro{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#fbf8f4;
+
+}
+
+.intro-card{
+
+max-width:850px;
+
+text-align:center;
+
+padding:70px;
+
+}
+
+.intro-card h2{
+
+font-size:55px;
+
+margin-bottom:30px;
+
+}
+
+.intro-card p{
+
+font-size:22px;
+
+line-height:1.9;
+
+}
+
+.chapter{
+
+background:white;
+
+margin:80px auto;
+
+width:90%;
+
+max-width:1200px;
+
+border-radius:12px;
+
+overflow:hidden;
+
+box-shadow:0 20px 45px rgba(0,0,0,.08);
+
+}
+
+.chapter img{
+
+height:550px;
+
+object-fit:cover;
+
+}
+
+.content{
+
+padding:70px;
+
+}
+
+.number{
+
+font-family:"Pinyon Script",cursive;
+
+font-size:42px;
+
+color:#98a486;
+
+}
+
+.content h2{
+
+font-size:48px;
+
+margin:20px 0 40px;
+
+}
+
+.content p{
+
+font-size:21px;
+
+line-height:2;
+
+margin-bottom:25px;
+
+}
+
+.citation{
+
+margin-top:50px;
+
+font-family:"Pinyon Script",cursive;
+
+font-size:40px;
+
+color:#9f8870;
+
+text-align:center;
+
+}
+
+@media(max-width:900px){
+
+.book{
+
+padding:40px;
+
+margin:25px;
+
+}
+
+.book h1{
+
+font-size:48px;
+
+}
+
+.book h2{
+
+font-size:28px;
+
+}
+
+.intro-card{
+
+padding:30px;
+
+}
+
+.intro-card h2{
+
+font-size:40px;
+
+}
+
+.content{
+
+padding:35px;
+
+}
+
+.content h2{
+
+font-size:35px;
+
+}
+
+.content p{
+
+font-size:18px;
+
+}
+
+.chapter img{
+
+height:320px;
+
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<div id="loader">
+<section class="cover">
 
-<div class="loader-content">
-
-<p class="loader-text">
-
-Chaque histoire d'amour est unique...
-
-</p>
+<div class="book">
 
 <h1>
 
@@ -42,13 +381,13 @@ Tout a commencé par un "Enchanté"
 
 </h2>
 
-<p class="date">
+<div class="date">
 
 10 juillet 2027
 
-</p>
+</div>
 
-<button id="ouvrir">
+<button class="open" onclick="document.getElementById('intro').scrollIntoView({behavior:'smooth'})">
 
 📖 Ouvrir notre histoire
 
@@ -56,97 +395,25 @@ Tout a commencé par un "Enchanté"
 
 </div>
 
-</div>
-
-<main id="livre">
-
-<section class="hero">
-
-<div class="hero-overlay">
-
-<h1>
-
-Océane & Lucas
-
-</h1>
-
-<p>
-
-Bienvenue dans notre histoire.
-
-Merci de prendre quelques minutes pour découvrir les petits moments qui nous ont conduits jusqu'au plus beau chapitre de notre vie.
-
-</p>
-
-</div>
-
-<img src="images/couverture.jpg" alt="Couverture">
-
 </section>
 
-<section class="chapter">
+<section class="intro" id="intro">
 
-<div class="image">
-
-<img src="images/tinder.jpg" alt="Tinder">
-
-</div>
-
-<div class="content">
-
-<span>
-
-Chapitre I
-
-</span>
+<div class="intro-card">
 
 <h2>
 
-Tout a commencé par un "Enchanté"
+Bienvenue dans notre histoire...
 
 </h2>
 
 <p>
 
-Mai 2023.
+Chaque histoire d'amour est unique.
 
-Comme beaucoup de belles histoires aujourd'hui, la nôtre a commencé sur Tinder.
+Voici la nôtre.
 
-Un match.
-
-Puis un message.
-
-Un simple :
-
-<strong>
-
-« Enchanté. »
-
-</strong>
-
-À ce moment-là, nous étions loin d'imaginer que ce petit mot allait changer notre vie.
-
-Pendant des heures.
-
-Puis des nuits entières.
-
-Nous avons appris à nous connaître.
-
-Océane, née à Reims.
-
-Lucas, originaire de Prix-lès-Mézières.
-
-Deux villes.
-
-Deux vies.
-
-Et déjà cette envie de se rencontrer.
-
-</p>
-
-<p class="citation">
-
-« Les plus belles histoires commencent parfois là où on les attend le moins. »
+Merci d'avoir pris quelques minutes pour découvrir les petits moments qui nous ont conduits jusqu'au plus beau chapitre de notre vie.
 
 </p>
 
@@ -156,15 +423,83 @@ Et déjà cette envie de se rencontrer.
   
 <section class="chapter">
 
-    <div class="image">
-
-        <img src="images/gps.jpg" alt="Premier rendez-vous">
-
-    </div>
+    <img src="images/tinder.jpg" alt="Notre rencontre">
 
     <div class="content">
 
-        <span>Chapitre II</span>
+        <div class="number">Chapitre I</div>
+
+        <h2>Tout a commencé par un « Enchanté »</h2>
+
+        <p>
+
+            <strong>Mai 2023.</strong>
+
+            Comme beaucoup de belles histoires aujourd'hui, la nôtre a commencé… sur Tinder.
+
+            Un match.
+
+            Puis un message de Lucas.
+
+        </p>
+
+        <p style="text-align:center;font-size:28px;font-family:'Cormorant Garamond',serif;">
+
+            « Enchanté 😊 »
+
+        </p>
+
+        <p>
+
+            Un mot tout simple.
+
+            À ce moment-là, nous étions loin d'imaginer qu'il nous mènerait jusqu'au <strong>10 juillet 2027</strong>.
+
+        </p>
+
+        <p>
+
+            Après des heures…
+
+            puis des nuits entières à discuter,
+
+            nous avions enfin décidé de nous rencontrer.
+
+        </p>
+
+        <p>
+
+            Océane, née à Reims.
+
+            Lucas, Ardennais, originaire de Prix-lès-Mézières.
+
+            Deux villes.
+
+            Deux vies.
+
+            Et pourtant déjà cette impression que la distance n'aurait jamais le dernier mot.
+
+        </p>
+
+        <p class="citation">
+
+            « Les plus belles histoires commencent parfois là où on les attend le moins. »
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<section class="chapter">
+
+    <img src="images/gps.jpg" alt="Premier rendez-vous">
+
+    <div class="content">
+
+        <div class="number">Chapitre II</div>
 
         <h2>Le rendez-vous qui n'a jamais eu lieu</h2>
 
@@ -172,101 +507,53 @@ Et déjà cette envie de se rencontrer.
 
             Notre premier rendez-vous devait avoir lieu à la Fête de la Bière de Charleville-Mézières.
 
-            Tout semblait parfaitement organisé...
-
-            Jusqu'à ce que le GPS décide qu'un détour vers l'Aisne serait une excellente idée.
+            Tout semblait parfaitement organisé…
 
         </p>
 
         <p>
 
-            Après presque une heure de route, Lucas ne me voyant toujours pas arriver, je me suis enfin rendu compte que je m'étais trompée de direction.
+            Je prends la route depuis Reims.
 
-            Tant pis pour la fête de la bière.
+            Lucas m'envoie son adresse.
 
-            Nous avons alors décidé de nous retrouver à Reims.
+            Je connais pourtant très bien la route des Ardennes…
+
+            Enfin… c'est ce que je croyais.
 
         </p>
 
         <p>
 
-            Finalement, notre véritable premier rendez-vous n'a pas eu lieu là où nous l'avions imaginé.
+            Une heure plus tard, Lucas ne me voyant toujours pas arriver, je réalise enfin que je roule… vers l'Aisne.
 
-            Et avec le recul...
+            Comme quoi, même un GPS peut avoir un sens de l'humour.
 
-            Heureusement.
+        </p>
+
+        <p>
+
+            Nous décidons alors d'abandonner notre plan initial.
+
+            Puisque nous étions chacun à environ une heure de Reims, nous nous retrouvons finalement place d'Erlon.
+
+        </p>
+
+        <p>
+
+            Le premier rendez-vous a donc eu lieu à l'Ernest Hemingway.
+
+            La Fête de la Bière attendra.
+
+            Et avec le recul…
+
+            heureusement.
 
         </p>
 
         <p class="citation">
 
-            « Parfois, il faut se perdre pour trouver la bonne personne. »
-
-        </p>
-
-    </div>
-
-</section>
-
-<section class="chapter">
-
-    <div class="image">
-
-        <img src="images/bowling.jpg" alt="Bowling">
-
-    </div>
-
-    <div class="content">
-
-        <span>Chapitre III</span>
-
-        <h2>L'affaire du bowling</h2>
-
-        <p>
-
-            Après ce premier verre est venue une idée toute simple :
-
-            faire un bowling.
-
-        </p>
-
-        <p>
-
-            Selon Océane...
-
-            la victoire est incontestable.
-
-        </p>
-
-        <p>
-
-            Selon Lucas...
-
-            cette version des faits manque légèrement d'objectivité.
-
-        </p>
-
-        <p>
-
-            Une seule chose fait aujourd'hui l'unanimité :
-
-            <strong>
-
-            seuls les membres de la famille Barbaise reconnaissent officiellement le talent exceptionnel d'Océane pour ne faire que des strikes.
-
-            </strong>
-
-        </p>
-
-        <p>
-
-            Le débat est toujours en cours.
-
-        </p>
-
-        <p class="citation">
-
-            « Toute autre version des faits reste encore à prouver. »
+            « Heureusement qu'il existe plusieurs chemins pour arriver au même endroit… ❤️ »
 
         </p>
 
@@ -276,35 +563,95 @@ Et déjà cette envie de se rencontrer.
   
 <section class="chapter">
 
-    <div class="image">
-
-        <img src="images/voyages.jpg" alt="Nos voyages">
-
-    </div>
+    <img src="images/bowling.jpg" alt="Le bowling">
 
     <div class="content">
 
-        <span>Chapitre IV</span>
+        <div class="number">Chapitre III</div>
 
-        <h2>Des kilomètres de souvenirs</h2>
+        <h2>L'affaire du Bowling</h2>
 
         <p>
 
-            Un mois et demi plus tard...
-
-            Direction Annecy.
-
-            Notre premier voyage.
-
-            Notre premier bivouac.
-
-            Le premier anniversaire de Lucas passé à deux.
+            Après notre premier rendez-vous, nous décidons de poursuivre la soirée autour d'une partie de bowling.
 
         </p>
 
         <p>
 
-            Comme toute belle aventure, celle-ci ne s'est pas déroulée sans quelques péripéties.
+            Selon Océane...
+
+            elle a remporté la partie haut la main.
+
+        </p>
+
+        <p>
+
+            Selon Lucas...
+
+            les souvenirs sont beaucoup moins précis.
+
+        </p>
+
+        <p>
+
+            Une seule chose fait aujourd'hui l'unanimité.
+
+        </p>
+
+        <p>
+
+            <strong>
+
+                Seuls les membres de la famille Barbaise reconnaissent officiellement le talent exceptionnel d'Océane pour ne faire que des Strikes.
+
+            </strong>
+
+        </p>
+
+        <p>
+
+            Le débat reste donc officiellement ouvert...
+
+        </p>
+
+        <p class="citation">
+
+            « Certaines victoires restent... très discutées. »
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<section class="chapter">
+
+    <img src="images/voyages.jpg" alt="Nos voyages">
+
+    <div class="content">
+
+        <div class="number">Chapitre IV</div>
+
+        <h2>Des kilomètres de souvenirs</h2>
+
+        <p>
+
+            Un mois et demi plus tard, direction Annecy.
+
+            Notre premier voyage.
+
+            Notre premier bivouac.
+
+            Le premier anniversaire de Lucas à deux.
+
+        </p>
+
+        <p>
+
+            Comme toute belle aventure, celle-ci ne s'est pas déroulée sans quelques frayeurs.
 
             Entre les tempêtes, quelques rencontres pour le moins étonnantes et les imprévus, nous avons rapidement compris qu'ensemble, même les petits contretemps devenaient de merveilleux souvenirs.
 
@@ -320,11 +667,17 @@ Et déjà cette envie de se rencontrer.
 
             Et bien d'autres destinations encore.
 
-            Toutes différentes.
+        </p>
 
-            Toutes inoubliables.
+        <p>
 
-            Simplement parce que nous les avons vécues ensemble.
+            Des endroits tous différents.
+
+            Des souvenirs tous uniques.
+
+            Mais un point commun...
+
+            Ils étaient tous fabuleux, simplement parce que nous les avons vécus ensemble.
 
         </p>
 
@@ -338,17 +691,15 @@ Et déjà cette envie de se rencontrer.
 
 </section>
 
+
+
 <section class="chapter">
 
-    <div class="image">
-
-        <img src="images/rochehaut.jpg" alt="Rochehaut">
-
-    </div>
+    <img src="images/rochehaut.jpg" alt="Rochehaut">
 
     <div class="content">
 
-        <span>Chapitre V</span>
+        <div class="number">Chapitre V</div>
 
         <h2>Trois petits mots</h2>
 
@@ -366,37 +717,31 @@ Et déjà cette envie de se rencontrer.
 
         <p>
 
-            Le soleil descend doucement.
+            Le soleil commence doucement à disparaître.
 
             Le paysage est magnifique.
 
             Nous marchons côte à côte.
 
-            Puis nous nous arrêtons quelques instants.
-
         </p>
 
         <p>
 
-            Sans vraiment nous en rendre compte, ces trois petits mots que l'on attend parfois pendant des mois sont venus tout naturellement.
+            Puis, sans vraiment nous en rendre compte, ces trois petits mots que l'on attend parfois si longtemps sont venus tout naturellement.
+
+        </p>
+
+        <p style="text-align:center;font-size:30px;font-family:'Cormorant Garamond',serif;">
+
+            <strong>« Je t'aime. »</strong>
 
         </p>
 
         <p>
-
-            <strong>
-
-            « Je t'aime. »
-
-            </strong>
-
-        </p>
-
-        <p>
-
-            Aucun feu d'artifice.
 
             Aucun grand discours.
+
+            Aucun feu d'artifice.
 
             Juste nous deux.
 
@@ -408,7 +753,7 @@ Et déjà cette envie de se rencontrer.
 
         <p class="citation">
 
-            « Certains paysages restent gravés... certains instants encore davantage. »
+            « Il y a des paysages qu'on n'oublie jamais... et des instants encore moins. »
 
         </p>
 
@@ -418,15 +763,11 @@ Et déjà cette envie de se rencontrer.
 
 <section class="chapter">
 
-    <div class="image">
-
-        <img src="images/famille.jpg" alt="Notre famille">
-
-    </div>
+    <img src="images/famille.jpg" alt="Notre famille">
 
     <div class="content">
 
-        <span>Chapitre VI</span>
+        <div class="number">Chapitre VI</div>
 
         <h2>Une famille, puis deux</h2>
 
@@ -444,7 +785,7 @@ Et déjà cette envie de se rencontrer.
 
             Lucas a appris à connaître le petit Owen.
 
-            Très vite, des habitudes se sont créées.
+            Très vite, une magnifique complicité est née entre eux.
 
             Des jeux.
 
@@ -452,21 +793,19 @@ Et déjà cette envie de se rencontrer.
 
             Des fous rires.
 
-            Une complicité si naturelle qu'elle a donné l'impression qu'ils se connaissaient depuis toujours.
+            Une évidence.
 
         </p>
 
         <p>
 
-            La famille de Lucas a accueilli Owen avec énormément d'amour.
-
-            Comme s'il avait toujours fait partie de la famille.
+            La famille de Lucas a accueilli Owen comme s'il avait toujours fait partie des leurs.
 
             Sans différence.
 
             Sans hésitation.
 
-            Tout simplement avec le cœur.
+            Tout simplement avec beaucoup d'amour.
 
         </p>
 
@@ -478,21 +817,21 @@ Et déjà cette envie de se rencontrer.
 
         <p>
 
-            Lucas aussi a immédiatement trouvé sa place dans la famille d'Océane.
+            Lucas a lui aussi immédiatement trouvé sa place dans la famille d'Océane.
 
-            Il faut dire qu'il n'a pas fallu longtemps avant qu'il soit officiellement recruté dans la très célèbre équipe des <strong>Moniteurs</strong>...
-
-        </p>
-
-        <p>
-
-            <em>(Les Moniteurs savent qu'ils ne sont pas moniteurs... 😄)</em>
+            Il faut dire qu'il a très vite intégré la prestigieuse équipe des <strong>Moniteurs</strong>...
 
         </p>
 
         <p>
 
-            Depuis, il participe aux repas de famille, aux vacances, aux anniversaires, aux blagues parfois un peu douteuses et à tous ces moments qui rendent une famille unique.
+            <em>(Les Moniteurs savent qu'ils ne sont pas moniteurs.)</em>
+
+        </p>
+
+        <p>
+
+            Depuis, il participe aux repas, aux vacances, aux anniversaires, aux blagues parfois un peu douteuses et à tous ces petits moments qui rendent une famille unique.
 
         </p>
 
@@ -506,7 +845,7 @@ Et déjà cette envie de se rencontrer.
 
         <p class="citation">
 
-            « Une famille n'est pas seulement celle dans laquelle on naît... c'est aussi celle qui nous ouvre les bras. »
+            « Une famille ne se construit pas seulement avec un nom... mais avec le cœur. »
 
         </p>
 
@@ -514,17 +853,15 @@ Et déjà cette envie de se rencontrer.
 
 </section>
 
+
+
 <section class="chapter">
 
-    <div class="image">
-
-        <img src="images/appartement.jpg" alt="Notre appartement">
-
-    </div>
+    <img src="images/appartement.jpg" alt="Notre appartement">
 
     <div class="content">
 
-        <span>Chapitre VII</span>
+        <div class="number">Chapitre VII</div>
 
         <h2>Notre petit cocon</h2>
 
@@ -544,7 +881,7 @@ Et déjà cette envie de se rencontrer.
 
             Cet appartement est rapidement devenu bien plus qu'un simple toit.
 
-            C'est notre refuge.
+            Il est devenu notre refuge.
 
             Notre bulle.
 
@@ -556,19 +893,15 @@ Et déjà cette envie de se rencontrer.
 
             C'est ici que nous aimons nous retrouver tous les trois.
 
-            C'est ici que nous rêvons, que nous imaginons l'avenir et que nous construisons chaque jour un peu plus notre vie.
+            C'est ici que nous imaginons l'avenir.
+
+            C'est ici que nous continuons d'écrire notre histoire.
 
         </p>
 
         <p>
 
-            Mais cette maison ne nous ressemble pas seulement parce que nous y vivons.
-
-            Elle nous ressemble parce qu'elle est toujours remplie de ceux que nous aimons.
-
-        </p>
-
-        <p>
+            Mais cette maison est aussi celle de nos familles.
 
             Les repas qui s'éternisent.
 
@@ -576,27 +909,19 @@ Et déjà cette envie de se rencontrer.
 
             Les soirées jeux.
 
-            Les cafés qui durent des heures.
+            Les cafés qui deviennent des discussions de plusieurs heures.
 
             Les éclats de rire.
 
-            Les discussions interminables.
-
         </p>
 
         <p>
 
-            Nos familles y ont trouvé leur place aussi naturellement que nous.
-
-        </p>
-
-        <p>
-
-            Parce qu'au fond...
+            Finalement...
 
             une maison n'est jamais faite uniquement de murs.
 
-            Elle est faite de souvenirs.
+            Elle est faite des personnes qui la remplissent de vie.
 
         </p>
 
@@ -612,15 +937,11 @@ Et déjà cette envie de se rencontrer.
   
 <section class="chapter">
 
-    <div class="image">
-
-        <img src="images/demande.jpg" alt="La demande en mariage">
-
-    </div>
+    <img src="images/demande.jpg" alt="La demande en mariage">
 
     <div class="content">
 
-        <span>Chapitre VIII</span>
+        <div class="number">Chapitre VIII</div>
 
         <h2>Le plus beau des "Oui"</h2>
 
@@ -644,13 +965,13 @@ Et déjà cette envie de se rencontrer.
 
             Heureusement, une petite souris nommée <strong>Solène</strong> est venue lui prêter main forte.
 
-            Grâce à ses précieux conseils, la bague parfaite a finalement été trouvée.
+            Après de longues recherches, la bague parfaite est enfin arrivée.
 
         </p>
 
         <p>
 
-            Le plan était peut-être d'attendre le bon moment…
+            Le plan était peut-être d'attendre le bon moment.
 
             Mais parfois, le bon moment ne se prévoit pas.
 
@@ -660,7 +981,7 @@ Et déjà cette envie de se rencontrer.
 
         <p>
 
-            À peine la bague reçue, Lucas savait qu'il ne pouvait plus attendre.
+            Lucas a su immédiatement que c'était ce soir-là.
 
         </p>
 
@@ -668,7 +989,7 @@ Et déjà cette envie de se rencontrer.
 
             En moins d'une heure, notre appartement s'est transformé.
 
-            Des dizaines de bougies allumées.
+            Des dizaines de bougies.
 
             Un jeu de piste.
 
@@ -678,39 +999,27 @@ Et déjà cette envie de se rencontrer.
 
         <p>
 
-            Puis…
+            Puis...
 
         </p>
 
-        <p>
+        <p style="text-align:center;font-size:28px;">
 
             Un genou à terre.
 
         </p>
 
-        <p>
+        <p style="text-align:center;font-size:28px;">
 
             Quelques mots.
 
         </p>
 
-        <p>
+        <p style="text-align:center;font-size:42px;font-family:'Cormorant Garamond',serif;">
 
-            Beaucoup d'émotion.
-
-        </p>
-
-        <p>
-
-            Et un immense…
+            <strong>« Oui. » ❤️</strong>
 
         </p>
-
-        <h3 class="oui">
-
-            OUI ❤️
-
-        </h3>
 
         <p>
 
@@ -720,9 +1029,9 @@ Et déjà cette envie de se rencontrer.
 
         <p>
 
-            Bon…
+            Bon...
 
-            Il paraît qu'avec l'âge, Lucas a eu un peu plus de mal à se relever qu'à s'agenouiller…
+            Il paraît qu'avec l'âge, Lucas a eu un peu plus de mal à se relever qu'à s'agenouiller...
 
             Mais cela valait largement l'effort.
 
@@ -734,7 +1043,7 @@ Et déjà cette envie de se rencontrer.
 
             Dans cette bulle que nous avons construite ensemble.
 
-            Parce qu'au fond…
+            Parce qu'au fond...
 
             c'est exactement là qu'elle devait avoir lieu.
 
@@ -742,7 +1051,7 @@ Et déjà cette envie de se rencontrer.
 
         <p class="citation">
 
-            « Il n'y avait peut-être pas de château… mais il y avait tout ce qui comptait. »
+            « Il n'y avait peut-être pas de château... mais il y avait tout ce qui comptait. »
 
         </p>
 
@@ -752,19 +1061,15 @@ Et déjà cette envie de se rencontrer.
 
 
 
-<section class="chapter final">
+<section class="chapter">
 
-    <div class="image">
+    <img src="images/fin.jpg" alt="Fin">
 
-        <img src="images/fin.jpg" alt="Océane et Lucas">
+    <div class="content" style="text-align:center;">
 
-    </div>
+        <h2 style="font-size:60px;">
 
-    <div class="content center">
-
-        <h2>
-
-            Le plus beau reste à écrire…
+            Le plus beau reste à écrire...
 
         </h2>
 
@@ -776,7 +1081,7 @@ Et déjà cette envie de se rencontrer.
 
         <p>
 
-            Finalement…
+            Finalement...
 
         </p>
 
@@ -818,15 +1123,17 @@ Et déjà cette envie de se rencontrer.
 
         <p>
 
-            Et une certitude…
+            Et une certitude.
 
         </p>
 
-        <h3>
+        <h2>
 
             Le plus beau chapitre commence aujourd'hui.
 
-        </h3>
+        </h2>
+
+        <br>
 
         <h1>
 
@@ -834,13 +1141,17 @@ Et déjà cette envie de se rencontrer.
 
         </h1>
 
-        <p class="signature">
+        <br>
+
+        <p class="citation">
 
             ❤️ Océane, Lucas & Owen ❤️
 
         </p>
 
-        <p class="citation">
+        <br>
+
+        <p>
 
             Merci de faire partie de notre histoire.
 
@@ -850,9 +1161,55 @@ Et déjà cette envie de se rencontrer.
 
 </section>
 
-</main>
+<script>
 
-<script src="js/script.js"></script>
+document.querySelector(".open").addEventListener("click",()=>{
+
+    document.getElementById("intro").scrollIntoView({
+
+        behavior:"smooth"
+
+    });
+
+});
+
+const chapters=document.querySelectorAll(".chapter");
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.animate([
+
+{opacity:0,transform:"translateY(60px)"},
+
+{opacity:1,transform:"translateY(0)"}
+
+],{
+
+duration:900,
+
+fill:"forwards"
+
+});
+
+}
+
+});
+
+},{threshold:.2});
+
+chapters.forEach(chapter=>{
+
+chapter.style.opacity=0;
+
+observer.observe(chapter);
+
+});
+
+</script>
 
 </body>
 
